@@ -5,14 +5,23 @@ on:
     types: [opened, edited, labeled, unlabeled, synchronize]
 
 jobs:
-  # ============================================================================
-  # Job 1: Verify PR body contains Closes/Fixes/Resolves #N
-  # ============================================================================
-  check-issue-reference:
-    name: Check Issue Reference
+  pr-policy:
+    name: PR policy (issue + labels)
     runs-on: ubuntu-latest
     steps:
+      - name: Detect dependency bots
+        id: meta
+        run: |
+          LOGIN='${{ github.event.pull_request.user.login }}'
+          if [ "$LOGIN" = "dependabot[bot]" ] || [ "$LOGIN" = "renovate[bot]" ]; then
+            echo "skip_policy=true" >> "$GITHUB_OUTPUT"
+            echo "Skipping human PR policy for bot: $LOGIN"
+          else
+            echo "skip_policy=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Verify PR links an issue
+        if: steps.meta.outputs.skip_policy != 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -37,15 +46,8 @@ jobs:
             core.notice(`✅ PR references issue #${issueNumber}`);
             core.exportVariable('LINKED_ISSUE', issueNumber.toString());
 
-  # ============================================================================
-  # Job 2: Verify the linked issue has status:approved label
-  # ============================================================================
-  check-issue-approved:
-    name: Check Issue Has status:approved
-    runs-on: ubuntu-latest
-    needs: check-issue-reference
-    steps:
       - name: Verify issue is approved
+        if: steps.meta.outputs.skip_policy != 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -91,14 +93,8 @@ jobs:
 
             core.notice(`✅ Issue #${issueNumber} has status:approved`);
 
-  # ============================================================================
-  # Job 3: Verify PR has exactly one type:* label
-  # ============================================================================
-  check-type-label:
-    name: Check PR Has type:* Label
-    runs-on: ubuntu-latest
-    steps:
       - name: Verify PR has a type label
+        if: steps.meta.outputs.skip_policy != 'true'
         uses: actions/github-script@v7
         with:
           script: |
