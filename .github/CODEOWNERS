@@ -1,0 +1,15 @@
+# ============================================================================
+# CODEOWNERS — soqu-audit
+# ============================================================================
+# This file defines who must approve pull requests before they can be merged.
+#
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# ============================================================================
+
+# Default owner for everything in the repo
+* @soqudev
+
+# Critical files - extra attention
+/.github/ @soqudev
+/bin/soqu-audit @soqudev
+/lib/ @soqudev
