@@ -1,21 +1,11 @@
 <p align="center">
-  <img width="1024" height="408" alt="image" src="https://github.com/user-attachments/assets/e534ba1e-0044-45c7-a788-b455733c0052" />
-</p>
-
-<p align="center">
   <strong>soqu-audit — Provider-agnostic code review using AI</strong><br>
   Use Claude, Gemini, Codex, OpenCode, Ollama, LM Studio, GitHub Models, or any AI to enforce your coding standards.<br>
   Zero dependencies. Pure Bash. Works everywhere.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.8.0-blue.svg" alt="Version">
-  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
-  <img src="https://img.shields.io/badge/bash-5.0%2B-orange.svg" alt="Bash">
-  <img src="https://img.shields.io/badge/platforms-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg" alt="Platforms">
-  <img src="https://img.shields.io/badge/homebrew-tap-FBB040.svg" alt="Homebrew">
-  <img src="https://img.shields.io/badge/tests-266%20passing-brightgreen.svg" alt="Tests">
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+  <sub>Version 2.8.0 · MIT · Bash 5.0+ · macOS · Linux · Windows · Homebrew tap · Tests in CI · PRs welcome</sub>
 </p>
 
 <p align="center">
@@ -30,7 +20,7 @@
 
 ## Example
 
-<img width="962" height="941" alt="image" src="https://github.com/user-attachments/assets/c8963dff-6aa5-420c-b58b-1416e81af384" />
+See [docs/examples.md](docs/examples.md) for screenshots and walkthroughs.
 
 ## 🎯 Why?
 
